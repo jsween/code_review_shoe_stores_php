@@ -10,6 +10,15 @@
             $this->id = $id;
         }
 
+        function getName()
+        {
+            return $this->name;
+        }
+
+        function getId()
+        {
+            return $this->id;
+        }
 
     }
 
