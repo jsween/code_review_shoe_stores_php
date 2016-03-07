@@ -9,23 +9,25 @@
     {% include '/includes/navbar.html.twig' %}
     <div class="container">
         {% if brands is not empty %}
-            <p>Here are all your brands:</p>
+            <h4 class="well">Here are all your brands:</h4>
             <ul>
                 {% for brand in brands %}
                     <li><a href="/brands/{{ brand.getId }}">{{ brand.getDescription }}</a></li>
                 {% endfor %}
             </ul>
+        {% else %}
+        <h4 class="well">Lets Add a Brand</h4>
         {% endif %}
 
     <form action='/brands' method='post'>
         <label for='name'>Brand name:</label>
-        <input id='name' name='name' type='text'>
+        <input id='name' name='name' type='text' required>
 
-        <button type='submit'>Add brand</button>
+        <button class='btn btn-success' type='submit'>Add brand</button>
     </form>
 
     <form action='/delete_brands' method='post'>
-        <button type='submit'>Clear Brands</button>
+        <button class='btn btn-success' type='submit'>Clear Brands</button>
     </form>
     </div>
 </body>
