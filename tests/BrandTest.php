@@ -6,7 +6,7 @@
     */
 
     require_once __DIR__ . '/../src/Brand.php';
-    // require_once __DIR__ . '/../src/Store.php';
+    require_once __DIR__ . '/../src/Store.php';
 
     $server = 'mysql:host=localhost;dbname=shoes_test';
     $username = 'root';
