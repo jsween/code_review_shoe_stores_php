@@ -26,9 +26,21 @@
             // Arrange
             $name = "Store";
             $id = 1;
-            $test_Client = new Brand($name, $id);
+            $test_Store = new Store($name, $id);
             // Act
-            $result = $test_Client->getName();
+            $result = $test_Store->getName();
+            // Assert
+            $this->assertEquals("Store", $result);
+        }
+
+        function test_setName()
+        {
+            // Arrange
+            $name = "Store";
+            $id = 1;
+            $test_Store = new Store($name, $id);
+            // Act
+            $result = $test_Store->getName();
             // Assert
             $this->assertEquals("Store", $result);
         }
@@ -38,9 +50,9 @@
             // Arrange
             $name = "Store";
             $id = 1;
-            $test_Client = new Brand($name, $id);
+            $test_Store = new Store($name, $id);
             // Act
-            $result = $test_Client->getId();
+            $result = $test_Store->getId();
             // Assert
             $this->assertEquals(1, $result);
         }
@@ -100,16 +112,16 @@
         {
             // Arrange
             $name = "Store";
-            $test_brand = new Brand($name);
+            $test_brand = new Store($name);
             $test_brand->save();
 
             $name2 = "Store 2";
-            $test_brand2 = new Brand($name2);
+            $test_brand2 = new Store($name2);
             $test_brand2->save();
 
             // Act
             $id = $test_brand->getId();
-            $result = Brand::find($id);
+            $result = Store::find($id);
 
             // Assert
             $this->assertEquals($test_brand, $result);
