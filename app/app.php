@@ -74,7 +74,6 @@
         $name = $_POST['name'];
         $store = Store::find($id);
         $store->update($name);
-        var_dump($store->getBrands());
         return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
 
