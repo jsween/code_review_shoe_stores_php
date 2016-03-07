@@ -15,7 +15,17 @@
 
     class BrandTest extends PHPUnit_Framework_TestCase
     {
-
+        function test_getName()
+        {
+            // Arrange
+            $name = "Nike";
+            $id = 1;
+            $test_Client = new Brand($name, $id);
+            // Act
+            $result = $test_Client->getName();
+            // Assert
+            $this->assertEquals("Nike", $result);
+        }
     }
 
  ?>
