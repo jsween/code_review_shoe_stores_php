@@ -115,6 +115,23 @@
             $this->assertEquals($test_brand, $result);
         }
 
+        function test_delete()
+        {
+            // Arrange
+            $name = "Store";
+            $test_store = new Store($name);
+            $test_store->save();
+            $name2 = "Store 2";
+            $test_store2 = new Store($name2);
+            $test_store2->save();
+
+            // Act
+            $test_store->delete();
+
+            // Assert
+            $this->assertEquals([$test_store2], Store::getAll());
+        }
+
 
     }
 
