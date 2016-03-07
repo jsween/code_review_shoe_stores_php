@@ -12,7 +12,7 @@
             <h4 class="well">Here are all your brands:</h4>
             <ul>
                 {% for brand in brands %}
-                    <li><a href="/brands/{{ brand.getId }}">{{ brand.getDescription }}</a></li>
+                    <li><a href="/brands/{{ brand.getId }}">{{ brand.getName }}</a></li>
                 {% endfor %}
             </ul>
         {% else %}
