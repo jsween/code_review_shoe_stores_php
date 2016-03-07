@@ -1,0 +1,31 @@
+<html>
+<head>
+    {% include '/includes/head.html.twig' %}
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="center">Walkabout Shoes</h1>
+    </div>
+
+    <div class="container">
+        {% if stores is not empty %}
+        <p>Here are all your stores:</p>
+        <ul>
+            {% for store in stores %}
+                <li><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action='/stores' method='post'>
+        <label for='name'>Category name</label>
+        <input id='name' name='name' type='text'>
+
+        <button type='submit'>Add store</button>
+    </form>
+    <form action='/delete_stores' method='post'>
+        <button type='submit'>Clear</button>
+    </form>
+    </div>
+</body>
+</html>
