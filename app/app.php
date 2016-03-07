@@ -70,6 +70,14 @@
         return $app['twig']->render('store_edit.html.twig', array('store' => $store));
     });
 
+    $app->patch("/stores/{id}", function($id) use ($app) {
+        $name = $_POST['name'];
+        $store = Store::find($id);
+        $store->update($name);
+        var_dump($store->getBrands());
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $store->getBrands()));
+    });
+
     $app->delete("/stores/{id}", function($id) use ($app) {
         $stores = Store::find($id);
         $stores->delete();
