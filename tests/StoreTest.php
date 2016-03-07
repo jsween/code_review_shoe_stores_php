@@ -132,6 +132,22 @@
             $this->assertEquals([$test_store2], Store::getAll());
         }
 
+        function test_update()
+        {
+            // Arrange
+            $name = "Store";
+            $test_store = new Store($name);
+            $test_store->save();
+            $new_name = "Store Updated";
+
+            // Act
+            $test_store->update($new_name);
+            $result = $test_store->getName();
+
+            // Assert
+            $this->assertEquals($new_name, $result);
+        }
+
 
     }
 
