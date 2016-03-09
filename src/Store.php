@@ -81,17 +81,14 @@
 
         function getBrands()
         {
-            $query = $GLOBALS['DB']->query("SELECT brand_id FROM stores_brands WHERE store_id = {$this->getId()};");
-            $brand_ids = $query->fetchAll(PDO::FETCH_ASSOC);
-
+            $returned_brands = $GLOBALS['DB']->query("SELECT brands.* FROM stores
+                JOIN stores_brands ON (stores_brands.store_id = stores.id)
+                JOIN brands ON (brands.id = stores_brands.brand_id)
+                WHERE stores.id = {$this->getId()};");
             $brands = array();
-            foreach($brand_ids as $id) {
-                $brand_id = $id['brand_id'];
-                $result = $GLOBALS['DB']->query("SELECT * FROM brands WHERE id = {$brand_id};");
-                $returned_brand = $result->fetchAll(PDO::FETCH_ASSOC);
-
-                $name = $returned_brand[0]['name'];
-                $id = $returned_brand[0]['id'];
+            foreach($returned_brands as $brand) {
+                $name = $brand['name'];
+                $id = $brand['id'];
                 $new_brand = new Brand($name, $id);
                 array_push($brands, $new_brand);
             }
